@@ -55,10 +55,8 @@ export default {
   },
   methods: {
     async register() {
-      // Get the authentication object
       const auth = getAuth();
 
-      // Use createUserWithEmailAndPassword function
       try {
         const userCredential = await createUserWithEmailAndPassword(
           auth,
@@ -71,7 +69,6 @@ export default {
       } catch (error) {
         console.error('Error registering user:', error.message);
         this.error = error.message;
-        // Handle registration error
       }
     },
   },
@@ -117,6 +114,10 @@ export default {
   outline: none;
   border-radius: 6px;
   margin-top: 20px;
+  cursor: pointer;
+}
+.register-form button:hover {
+  background-color: #992943;
 }
 .register-form .message {
   display: flex;

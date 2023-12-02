@@ -8,6 +8,8 @@ import {
 const firebaseConfig = {
   apiKey: 'AIzaSyBA18dPzbFnwgYWkXmm1Kp_d1JGTABmhv8',
   authDomain: 'car-dealership-b29c0.firebaseapp.com',
+  databaseURL:
+    'https://car-dealership-b29c0-default-rtdb.europe-west1.firebasedatabase.app',
   projectId: 'car-dealership-b29c0',
   storageBucket: 'car-dealership-b29c0.appspot.com',
   messagingSenderId: '388159575214',
@@ -16,7 +18,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 const createUser = async (email, password) => {
@@ -27,6 +29,3 @@ const signIn = async (email, password) => {
   await signInWithEmailAndPassword(auth, email, password);
 };
 export { createUser, signIn };
-
-const user = getAuth();
-console.log(user.currentUser);

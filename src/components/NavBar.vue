@@ -7,6 +7,7 @@
       <router-link class="navbar-item" to="/">Home</router-link>
       <router-link class="navbar-item" to="/about">About</router-link>
       <router-link class="navbar-item" to="/contact">Contact</router-link>
+      <router-link class="navbar-item" to="/catalog">Catalog</router-link>
 
       <router-link v-if="!isLoggedIn" class="navbar-item" to="/login"
         >Login</router-link
@@ -35,18 +36,15 @@ export default {
       const auth = getAuth();
       try {
         await signOut(auth);
-        // Redirect or handle logout success
+        this.$router.push('/');
       } catch (error) {
         console.error('Error:', error.message);
-        // Handle logout error
       }
     },
   },
   created() {
-    // Listen for authentication state changes
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-      // Update isLoggedIn based on whether a user is logged in or not
       this.isLoggedIn = !!user;
     });
   },
@@ -60,9 +58,7 @@ export default {
 .show {
   display: block;
 }
-.navbar {
-  background-color: #3498db;
-}
+
 .navbar {
   background-color: #be3455;
   display: flex;

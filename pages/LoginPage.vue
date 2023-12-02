@@ -47,7 +47,6 @@ export default {
     async login() {
       try {
         await signIn(this.email, this.password);
-
         this.$router.push('/');
       } catch (error) {
         console.error('Error:', error.message);
@@ -66,7 +65,6 @@ export default {
   align-items: center;
 }
 .login-form {
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -99,7 +97,12 @@ export default {
   outline: none;
   border-radius: 6px;
   margin-top: 20px;
+  cursor: pointer;
 }
+.login-form button:hover {
+  background-color: #992943;
+}
+
 .login-form .message {
   display: flex;
   justify-content: center;

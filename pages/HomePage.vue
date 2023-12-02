@@ -5,10 +5,32 @@
       We are your place for the best cars. Check out our wide assortment of new
       and used cars from leading manufacturers.
     </p>
+    <p>Available cars now {{ cars.length }}</p>
   </div>
 </template>
 
-<script></script>
+<script>
+import { getDatabase, ref, onValue } from 'firebase/database';
+
+export default {
+  data() {
+    return {
+      cars: [],
+    };
+  },
+
+  created() {
+    const db = getDatabase();
+    const starCountRef = ref(db, 'cars');
+    onValue(starCountRef, (snapshot) => {
+      if (snapshot.val() != null) {
+        const data = Object.entries(snapshot.val());
+        this.cars = data;
+      }
+    });
+  },
+};
+</script>
 
 <style scoped>
 .navbar {

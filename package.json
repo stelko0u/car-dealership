@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --host 0.0.0.0 --port 3000",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -12,6 +12,7 @@
     "@babel/plugin-transform-class-properties": "^7.23.3",
     "core-js": "^3.33.2",
     "firebase": "^10.6.0",
+    "pinia": "^2.1.7",
     "vue": "^3.2.13",
     "vue-router": "^4.2.5"
   },
