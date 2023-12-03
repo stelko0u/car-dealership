@@ -72,6 +72,7 @@ export default {
     async deleteCar() {
       try {
         if (!user) {
+          console.log(user);
           console.error('User not logged in!');
           return;
         }

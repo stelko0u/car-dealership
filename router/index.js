@@ -7,6 +7,9 @@ import CarListPage from '../pages/CarListPage.vue';
 import CarDetails from '../pages/CarDetails.vue';
 import EditPage from '../pages/EditPage.vue';
 import DeletePage from '../pages/DeletePage.vue';
+import ContactPage from '../pages/ContactPage.vue';
+import AboutPage from '../pages/AboutPage.vue';
+import MyProfile from '../pages/MyProfile.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
 import { getDatabase, get, ref } from 'firebase/database';
@@ -72,6 +75,16 @@ const routes = [
     component: HomePage,
   },
   {
+    path: '/contact',
+    name: 'ContactPage',
+    component: ContactPage,
+  },
+  {
+    path: '/about',
+    name: 'AboutPage',
+    component: AboutPage,
+  },
+  {
     path: '/register',
     name: 'RegisterPage',
     component: RegisterPage,
@@ -97,10 +110,24 @@ const routes = [
       }
     },
   },
+
   {
     path: '/add-car',
     name: 'AddCarPage',
     component: AddCarPage,
+    beforeEnter: async (to, from, next) => {
+      const authenticated = await isAuthenticated();
+      if (authenticated) {
+        next();
+      } else {
+        next('/');
+      }
+    },
+  },
+  {
+    path: '/profile',
+    name: 'MyProfile',
+    component: MyProfile,
     beforeEnter: async (to, from, next) => {
       const authenticated = await isAuthenticated();
       if (authenticated) {

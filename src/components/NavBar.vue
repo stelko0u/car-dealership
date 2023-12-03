@@ -19,6 +19,9 @@
       <router-link v-if="isLoggedIn" class="navbar-item" to="/add-car"
         >Add car</router-link
       >
+      <router-link v-if="isLoggedIn" class="navbar-item" to="/profile"
+        >My profile</router-link
+      >
     </div>
   </nav>
 </template>

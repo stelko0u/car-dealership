@@ -43,6 +43,7 @@ export default {
     const db = getDatabase();
     const carRef = ref(db, `cars/${carId}`);
     this.carId = carId;
+    
 
     onAuthStateChanged(auth, (newUser) => {
       this.user = newUser;

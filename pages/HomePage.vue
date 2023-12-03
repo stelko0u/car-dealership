@@ -2,11 +2,16 @@
   <div class="homePage">
     <h1>Welcome to Car-Dealership</h1>
     <p>
-      We are your place for the best cars. Check out our wide assortment of new
-      and used cars from leading manufacturers.
+      Hello, in our website here you can upload your car for sale for FREE.
+      Without any limits.
     </p>
-    <p>Available cars now {{ cars.length }}</p>
+    <p>In out website car dealer available cars {{ cars.length }}</p>
   </div>
+  <section class="pictures">
+    <img src="../src/assets/first.jpg" alt="" />
+    <img src="../src/assets/second.jpg" alt="" />
+    <img src="../src/assets/third.jpg" alt="" />
+  </section>
 </template>
 
 <script>
@@ -55,5 +60,25 @@ export default {
 }
 .navbar-item:hover {
   background-color: #ad2f4c;
+}
+.homePage {
+  padding: 1.5rem;
+}
+.homePage h1 {
+  font-size: 2.1rem;
+  padding-bottom: 10px;
+}
+.homePage p {
+  font-size: 1.4rem;
+}
+.pictures {
+  padding: 1rem;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.pictures img {
+  width: 600px;
 }
 </style>

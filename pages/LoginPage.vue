@@ -10,7 +10,9 @@
             v-model="email"
             required
             placeholder="Email"
+            class="effect-4"
           />
+          <span class="focus-border"></span>
         </span>
         <span>
           <input
@@ -53,6 +55,9 @@ export default {
         this.error = 'Error!';
       }
     },
+    applyBorder() {
+      this.$refs.emailInput.classList.add('focused');
+    },
   },
 };
 </script>
@@ -71,8 +76,8 @@ export default {
   align-items: center;
   text-align: center;
   padding: 1.25rem;
-  box-shadow: #000 1px 1px 10px;
-  border-radius: 6px;
+  box-shadow: #000 1px 2px 15px;
+  border-radius: 10px;
 }
 .login-form h2 {
   font-size: 36px;
@@ -87,7 +92,16 @@ export default {
 .login-form input {
   font-size: 24px;
   padding: 0.15rem 0.25rem;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid transparent; 
+  transition: border-bottom 0.3s ease; 
 }
+
+.login-form input:focus {
+  border-bottom: 2px solid #be3455; 
+}
+
 .login-form button {
   background-color: #be3455;
   font-size: 24px;
@@ -115,5 +129,6 @@ export default {
 .login-form .message a {
   text-decoration: none;
   font-size: 20px;
+  color: #be3455;
 }
 </style>
