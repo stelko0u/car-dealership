@@ -3,24 +3,29 @@
     <div v-if="!user">Loading...</div>
 
     <div class="user-info" v-else>
-      <h2>User information</h2>
-      <p>Email: {{ user.email }}</p>
-      <p>Created at: {{ user.metadata.creationTime }}</p>
-      <p>Last sign at: {{ user.metadata.lastSignInTime }}</p>
+      <h1>User information</h1>
+      <h4>Email: {{ user.email }}</h4>
+      <h4>Created at: {{ user.metadata.creationTime }}</h4>
+      <h4>Last sign at: {{ user.metadata.lastSignInTime }}</h4>
       <p></p>
     </div>
 
     <div class="user-cars">
-      <h2>Your Cars</h2>
+      <h1>Your Cars</h1>
       <div v-if="cars.length > 0">
-        <div v-for="car in cars" :key="car.id" class="car-item">
-          <p>Brand: {{ car.brand }}</p>
-          <p>Model: {{ car.model }}</p>
-          <p>Year: {{ car.year }}</p>
-        </div>
+        <ul class="car-listing">
+          <li v-for="car in cars" :key="car.id">
+            <h3>Brand: {{ car.brand }}</h3>
+            <h3>Model: {{ car.model }}</h3>
+            <h3>Engine: {{ car.enginge }}</h3>
+
+            <h3>Year: {{ car.year }}</h3>
+            <router-link :to="`/catalog/${car.id}`">Details</router-link>
+          </li>
+        </ul>
       </div>
       <div v-else>
-        <p>You don't have cars. :(</p>
+        <h4>You don't have cars. :(</h4>
       </div>
     </div>
   </div>
@@ -67,6 +72,7 @@ export default {
           }
         });
         this.cars = cars;
+        console.log(cars);
       });
     },
   },
@@ -75,8 +81,8 @@ export default {
 
 <style scoped>
 .container {
-  width: 80%;
-  margin: auto;
+  width: 100%;
+  padding: 2rem;
 }
 
 .user-info,
@@ -84,9 +90,41 @@ export default {
   margin-bottom: 20px;
 }
 
-.car-item {
-  border: 1px solid #ccc;
+.car-listing {
+  display: flex;
+  flex-direction: row;
   padding: 10px;
   margin-bottom: 10px;
+  list-style: none;
+
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.car-listing li {
+  padding: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 0 10px 2px #ccc;
+  border-radius: 6px;
+  flex: 0 0 calc(20% - 20px);
+}
+.car-listing li a {
+  padding: 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #000;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  background-color: #ccc;
+  border-radius: 4px;
+  transition: 0.5s;
+  margin-top: 20px;
+}
+.car-listing li a:hover {
+  background-color: #7a7a7a;
+  color: #fff;
+  transition: 0.5s;
 }
 </style>

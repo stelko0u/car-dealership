@@ -13,8 +13,12 @@
         <p>Engine: {{ car.engine }}</p>
         <p>Gearbox: {{ car.gearbox }}</p>
         <p>Price: {{ car.price }}$</p>
-        <button type="submit" @click="back">Back</button>
-        <button type="submit" @click="deleteCar">Delete Car</button>
+        <span class="btns">
+          <button type="submit" @click="back" class="back btn">Back</button>
+          <button type="submit" @click="deleteCar" class="delete btn">
+            Delete
+          </button>
+        </span>
       </div>
     </div>
   </div>
@@ -36,7 +40,7 @@ export default {
       carDataLoaded: false,
     };
   },
-  created() {
+  mounted() {
     const url = window.location.href;
     const carId = url.split('/').slice(-1)[0];
     const carRef = ref(db, `cars/${carId}`);
@@ -110,5 +114,30 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+.btn {
+  outline: none;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+.btns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 10px;
+}
+.btn:hover {
+  filter: brightness(0.8);
+  transition: 0.5s;
+}
+.delete {
+  color: #fff;
+  background-color: #c72222;
+}
+.back {
+  background-color: #ccc;
 }
 </style>

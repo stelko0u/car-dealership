@@ -47,11 +47,12 @@ export default {
   flex-direction: row;
   gap: 20px;
   list-style: none;
+  flex-wrap: wrap;
 }
 .listing li {
   padding: 1rem;
   box-shadow: 0px 0px 5px 1px #000;
-  width: 300px;
+  flex: 0 0 calc(20% - 20px);
 }
 .listing li p {
   font-size: 26px;

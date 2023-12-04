@@ -72,13 +72,13 @@ export default {
   font-size: 1.4rem;
 }
 .pictures {
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
-  gap: 20px;
-  justify-content: center;
+
+  justify-content: space-between;
   align-items: center;
 }
 .pictures img {
-  width: 600px;
+  width: 500px;
 }
 </style>

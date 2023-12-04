@@ -81,8 +81,10 @@ export default {
   text-decoration: none;
   padding: 0.75rem;
   color: #fff;
+  transition: 0.5s;
 }
 .navbar-item:hover {
   background-color: #ad2f4c;
+  transition: 0.5s;
 }
 </style>
