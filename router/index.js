@@ -10,6 +10,7 @@ import DeletePage from '../pages/DeletePage.vue';
 import ContactPage from '../pages/ContactPage.vue';
 import AboutPage from '../pages/AboutPage.vue';
 import MyProfile from '../pages/MyProfile.vue';
+import NotFound from '../pages/NotFound.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
 import { getDatabase, get, ref } from 'firebase/database';
@@ -73,6 +74,10 @@ const routes = [
     path: '/',
     name: 'HomePage',
     component: HomePage,
+  },
+  {
+    path: '/:catchAll(.*)',
+    component: NotFound,
   },
   {
     path: '/contact',

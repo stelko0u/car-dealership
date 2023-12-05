@@ -64,7 +64,7 @@ export default {
       carDataLoaded: false,
     };
   },
-  created() {
+  mounted() {
     const url = window.location.href;
     const carId = url.split('/').slice(-1)[0];
     const carRef = ref(db, `cars/${carId}`);

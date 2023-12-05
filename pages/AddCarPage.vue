@@ -70,7 +70,6 @@ export default {
       try {
         const auth = getAuth();
         const user = auth.currentUser;
-        console.log(user.email);
 
         if (!user) {
           console.error('User not logged in!');
