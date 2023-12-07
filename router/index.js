@@ -42,6 +42,8 @@ const isAuthenticated = () => {
 
 const isOwner = async (carId) => {
   const auth = getAuth();
+
+  // Използвайте `await` директно, без да създавате Promise
   const user = await new Promise((resolve) => {
     const unsubscribe = onAuthStateChanged(auth, (newUser) => {
       resolve(newUser);
@@ -60,12 +62,14 @@ const isOwner = async (carId) => {
     const snapshot = await get(carRef);
     if (snapshot.exists()) {
       const car = snapshot.val();
-      return car.owner == user.currentUser.email;
+      console.log(car.owner + ' ' + user.email); // Полето `email` се използва вместо `currentUser.email`
+      return car.owner == user.email;
     } else {
-      return true;
+      return false;
     }
   } catch (error) {
-    return true;
+    console.error('Error checking ownership:', error);
+    return false;
   }
 };
 
@@ -159,6 +163,8 @@ const routes = [
     beforeEnter: async (to, from, next) => {
       const carId = to.params.id;
       const carIsOwner = await isOwner(carId);
+      console.log(carIsOwner);
+
       if (carIsOwner) {
         next();
       } else {
@@ -173,6 +179,7 @@ const routes = [
     beforeEnter: async (to, from, next) => {
       const carId = to.params.id;
       const carIsOwner = await isOwner(carId);
+      console.log(carIsOwner);
       if (carIsOwner) {
         next();
       } else {

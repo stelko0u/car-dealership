@@ -72,7 +72,6 @@ export default {
           }
         });
         this.cars = cars;
-        console.log(cars);
       });
     },
   },
