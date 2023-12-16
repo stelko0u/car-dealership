@@ -5,7 +5,7 @@
       Hello, in our website here you can upload your car for sale for FREE.
       Without any limits.
     </p>
-    <p>In out website car dealer available cars {{ cars.length }}</p>
+    <p>There are {{ cars.length }} available cars on our website.</p>
   </div>
   <section class="pictures">
     <img src="../src/assets/first.jpg" alt="" />
